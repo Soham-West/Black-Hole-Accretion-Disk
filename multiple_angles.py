@@ -5,7 +5,7 @@ import random
 frequecny = 10**15
 # Creating the x values of the plot
 x_vals = np.array([i * (frequecny) for i in np.arange(10, 10**4, .1)])
-
+x_vals_plots = [plank_h*x_val for x_val in x_vals]
 #Plotting the spectra for 7 different angles
 for r in range(0, 6):
         #Changed radius calculations to constants for simplification
@@ -14,7 +14,7 @@ for r in range(0, 6):
         y_vals = np.array([find_spectral_radiance(find_temp_of_acretion(outer_acretion_disk - inner_acretion_disk), i * frequecny) for i in np.arange(10, 10**4, .1)]) #Defining y values (spectral radiancs)
         y_vals_plot = [math.cos(angle_in_radians)*plank_h*y_val for y_val in y_vals]
         #Plotting with the added cos(angle) factor
-        plt.plot(x_vals, y_vals_plot, label = "incliniation angle " + str(observer_angle) + " degrees") 
+        plt.plot(x_vals_plots, y_vals_plot, label = "incliniation angle " + str(observer_angle) + " degrees") 
 
 #Using the trapz function to find the area under the curve which is the flux
 y_vals2 = [find_spectral_radiance(find_temp_of_acretion(outer_acretion_disk - inner_acretion_disk), i * frequecny) for i in np.arange(10, 10**4, .1)]

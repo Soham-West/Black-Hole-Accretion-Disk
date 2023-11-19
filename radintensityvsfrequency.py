@@ -6,7 +6,7 @@ width_ring = ((outer_acretion_disk - inner_acretion_disk)//radius_schwarz + 1)/n
 
 #Defining the x-values(frequencies)
 x_vals = np.array([i * frequency * plank_h for i in np.arange(10, 10**4, .1)])
-
+x_vals_plots = [plank_h*x_val for x_val in x_vals]
 #Creating sublpots to see how the observer angle changes spectra
 fig, axs = plt.subplots(2)
 
@@ -22,6 +22,7 @@ for i in range(0, 2):
                 #Adding redshift factor and altitude angle factor to the y_vals(spectral radiance)
                 y_val_ans = [abs((get_redshift(find_keplerian_velocity(distance_from_ring, bh_grams), t * frequency, optimal_angle_of_velocity(distance_from_ring, distance_from_center_to_observe_cm)) ** 4) * math.cos(angle) * x) for x in y_vals]
                 axs[i].plot(x_vals, y_val_ans, label = "ring: " + str(i))
+
 
 
 #Using the trapz function to find the area under the curve which is the flux
