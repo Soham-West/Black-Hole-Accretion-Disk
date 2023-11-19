@@ -21,7 +21,8 @@ for i in range(0, 2):
                 y_vals = ([find_spectral_radiance(find_temp_of_acretion(outer_acretion_disk - inner_acretion_disk), i * frequency) for i in np.arange(10, 10**4, .1)])
                 #Adding redshift factor and altitude angle factor to the y_vals(spectral radiance)
                 y_val_ans = [abs((get_redshift(find_keplerian_velocity(distance_from_ring, bh_grams), t * frequency, optimal_angle_of_velocity(distance_from_ring, distance_from_center_to_observe_cm)) ** 4) * math.cos(angle) * x) for x in y_vals]
-                axs[i].plot(x_vals_plots, y_val_ans, label = "angle: " + str(60 * i) + " degrees")
+                axs[i].plot(x_vals, y_val_ans, label = "ring: " + str(i))
+
 
 
 #Using the trapz function to find the area under the curve which is the flux
