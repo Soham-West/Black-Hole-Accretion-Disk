@@ -10,7 +10,7 @@ lums = [] #y-vals
 
 #Different luminosity for each frequency
 for i in np.arange(10, 10**4, .1):
-    frequency = i * (10 ** 16) #Defining the frequency
+    frequency = i * (10 ** 14) #Defining the frequency
     for r in range(1, num_of_rings + 1):
         temp = find_temp_of_acretion(width_ring * (r) * radius_schwarz) #removed the inner radius of the black hole
         area_ring = math.pi * (((inner_acretion_disk) + (r * width_ring * radius_schwarz) ** 2) - ((inner_acretion_disk + ((r-1) * width_ring * radius_schwarz)) ** 2))
@@ -23,10 +23,11 @@ for i in np.arange(10, 10**4, .1):
 
 
 #Plotting the graph
-lums_plot = [plank_h * lum for lum in lums]
-plt.plot(frequencys, lums_plot)
+frequency_plot = [plank_h * freq for freq in frequencys]
+plt.plot(frequency_plot, lums)
 plt.xlabel("Energy of photon(Ev)")
 plt.ylabel("Luminosity of ring")
 plt.xscale("log")
 plt.yscale("log")
+
 plt.show()
