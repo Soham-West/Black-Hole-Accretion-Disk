@@ -5,12 +5,12 @@ def new_find_temp_of_acretion(radius_from_center, grams, mass_acc):
 
 x_vals = [1.0 * r for r in np.arange((10**21), 10**28, 10**21)]
 #Changed radius calculations to constants for simplification
-y_vals = [new_find_temp_of_acretion(outer_acretion_disk - inner_acretion_disk,bh_grams, t) for t in x_vals]
+y_vals = [new_find_temp_of_acretion(t,bh_grams, 6.3*10**19) for t in x_vals]
 
 
 plt.xscale("log")
 plt.yscale("log")
-plt.xlabel("mass accretion rate(grams/second)")
+plt.xlabel("radius(cm)")
 plt.ylabel("temperature(kelvins)")
 plt.plot(x_vals, y_vals)
 plt.show()
